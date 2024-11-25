@@ -3,13 +3,14 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 08/11/2024 às 16:09
--- Versão do servidor: 10.4.28-MariaDB
--- Versão do PHP: 8.2.4
+-- Tempo de geração: 25/11/2024 às 04:04
+-- Versão do servidor: 10.4.32-MariaDB
+-- Versão do PHP: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -17,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Banco de dados: `biblioteca`
+-- Banco de dados: `bibliotecabd`
 --
 
 -- --------------------------------------------------------
@@ -27,12 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `livros` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id` int(11) NOT NULL,
   `titulo` varchar(256) NOT NULL,
   `autor` varchar(256) NOT NULL,
   `genero` varchar(100) NOT NULL,
-  `status_disponibilidade` enum('Disponível', 'Emprestado') DEFAULT 'Disponível',
-  PRIMARY KEY (`id`)
+  `status_disponibilidade` enum('Disponível','Emprestado') DEFAULT 'Disponível'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -42,20 +42,50 @@ CREATE TABLE `livros` (
 --
 
 CREATE TABLE `usuarios` (
-  `id_usu` int(11) NOT NULL AUTO_INCREMENT,
+  `id_usu` int(11) NOT NULL,
   `usu_login` varchar(256) NOT NULL,
   `usu_senha` varchar(256) NOT NULL,
-  `usu_tipo` int(11) NOT NULL,
-  PRIMARY KEY (`id_usu`)
+  `usu_tipo` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dados de exemplo para tabela `usuarios`
+-- Despejando dados para a tabela `usuarios`
 --
 
 INSERT INTO `usuarios` (`id_usu`, `usu_login`, `usu_senha`, `usu_tipo`) VALUES
 (1, 'admin', '21232f297a57a5a743894a0e4a801fc3', 1);
 
+--
+-- Índices para tabelas despejadas
+--
+
+--
+-- Índices de tabela `livros`
+--
+ALTER TABLE `livros`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Índices de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  ADD PRIMARY KEY (`id_usu`);
+
+--
+-- AUTO_INCREMENT para tabelas despejadas
+--
+
+--
+-- AUTO_INCREMENT de tabela `livros`
+--
+ALTER TABLE `livros`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT de tabela `usuarios`
+--
+ALTER TABLE `usuarios`
+  MODIFY `id_usu` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

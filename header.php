@@ -2,52 +2,34 @@
 <html lang="en">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <!--Manual css-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-    <!--Icons-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
-    <!--Aba
-    <link rel="shortcut icon" href="img/ico.png">
-    -->
-    <!--Datatables-->
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.css">
-    
-     <title>Contador</title>
+    <title>Biblioteca</title>
 </head>
 
 <body>
     <header>
-        <?php if (isset($_SESSION['login'])) {
-            echo '
+        <?php if (isset($_SESSION['login'])): ?>
             <div class="collapse" id="navbarToggleExternalContent">
-                
-                <div class="bg-dark p-4">
-                    <h5 class="text-white h4">Biblioteca para todos <span class="text-muted">Oficina</span></h5>
+                <div class="bg-primary p-4 rounded-bottom shadow">
+                    <h5 class="text-white fw-bold">Biblioteca para Todos</h5>
+                    <p class="text-white-50">Oficina de leitura e aprendizado</p>
                     <div>
-                        <a href="?pagina=cadastros" class="linkMenu">
-                            Cadastrar livro
-                        </a>
-                    </div>
-                    <div>
-                        <a href="logout.php" class="linkMenu">
-                            Sair
-                        </a>
+                        <a href="?pagina=cadastros" class="linkMenu d-block mb-2">Cadastrar Livro</a>
+                        <a href="logout.php" class="linkMenu d-block">Sair</a>
                     </div>
                 </div>
             </div>
-            <nav class="navbar navbar-dark bg-dark">
+            <nav class="navbar navbar-light bg-light shadow-sm">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
+                        <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
             </nav>
-            ';
-        }
-        ?>
+        <?php endif; ?>
     </header>
