@@ -15,16 +15,16 @@
     <header>
         <?php if (isset($_SESSION['login'])): ?>
             <div class="collapse" id="navbarToggleExternalContent">
-                <div class="bg-primary p-4 rounded-bottom shadow">
-                    <h5 class="text-white fw-bold">Biblioteca para Todos</h5>
-                    <p class="text-white-50">Oficina de leitura e aprendizado</p>
+                <div class="bg-dark p-4 rounded-bottom shadow">
+                    <h5 class="text-light fw-bold">Biblioteca para Todos</h5>
+                    <p class="text-muted">Oficina de leitura e aprendizado</p>
                     <div>
                         <a href="?pagina=cadastros" class="linkMenu d-block mb-2">Cadastrar Livro</a>
                         <a href="logout.php" class="linkMenu d-block">Sair</a>
                     </div>
                 </div>
             </div>
-            <nav class="navbar navbar-light bg-light shadow-sm">
+            <nav class="navbar navbar-dark bg-dark shadow-sm">
                 <div class="container-fluid">
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>

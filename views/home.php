@@ -1,28 +1,19 @@
 <div class="caixa">
-    <!--Login-->
-    <form method="post" action="login.php">
-        <h3>Sistema Bibliotecário</h3>
-        <div class="form-group">
+    <form method="post" action="login.php" autocomplete="off">
+        <h3 class="text-center fw-bold mb-4">Sistema Bibliotecário</h3>
+        <div class="form-group mb-3">
             <label for="exampleInputEmail1">Login</label>
-            <input type="text" class="form-control" name="usu_login" placeholder="Digite seu login">
+            <input type="text" class="form-control bg-dark text-light border-0" name="usu_login" placeholder="Digite seu login">
         </div>
-        <br>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label for="exampleInputPassword1">Senha</label>
-            <input type="password" class="form-control" name="usu_senha" placeholder="Digite sua senha">
+            <input type="password" class="form-control bg-dark text-light border-0" name="usu_senha" placeholder="Digite sua senha">
         </div>
-        <br>
-        <button type="submit" class="btn btn-primary">Entrar</button>
-        <br><br>
+        <button type="submit" class="btn btn-dark w-100">Entrar</button>
     </form>
-    <!--Fim Login-->
-    <?php
-        if (isset($_GET['erroLogin'])) {
-            echo '
-                <div id="erroLogin" class="alert alert-danger" role="alert">
-                    Erro! Tente novamente.
-                </div>
-            ';
-        }
-    ?>
+    <?php if (isset($_GET['erroLogin'])): ?>
+        <div id="erroLogin" class="alert alert-danger mt-3" role="alert">
+            Erro! Tente novamente.
+        </div>
+    <?php endif; ?>
 </div>
