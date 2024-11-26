@@ -1,25 +1,26 @@
 <?php
+include 'db.php';
 
-include 'db.php';  // Incluindo a conexão com o banco de dados
+// Valida os dados do formulário
+if (isset($_POST['id'], $_POST['titulo'], $_POST['autor'], $_POST['genero'], $_POST['status_disponibilidade'])) {
+    $id = intval($_POST['id']);
+    $titulo = trim($_POST['titulo']);
+    $autor = trim($_POST['autor']);
+    $genero = trim($_POST['genero']);
+    $status_disponibilidade = trim($_POST['status_disponibilidade']);
 
-// Recebe os dados do formulário
-$id = $_POST['id'];
-$titulo = $_POST['titulo'];  // Campo 'titulo'
-$autor = $_POST['autor'];    // Campo 'autor'
-$genero = $_POST['genero'];  // Campo 'genero' - novo campo
-$status_disponibilidade = $_POST['status_disponibilidade']; // Campo 'status_disponibilidade' 
+    // Atualiza os dados do livro
+    $query = "UPDATE livros SET titulo = ?, autor = ?, genero = ?, status_disponibilidade = ? WHERE id = ?";
+    $stmt = mysqli_prepare($conexao, $query);
+    mysqli_stmt_bind_param($stmt, "ssssi", $titulo, $autor, $genero, $status_disponibilidade, $id);
 
-// Atualiza o livro na tabela 'livros'
-$query = "UPDATE livros 
-          SET titulo='$titulo', autor='$autor', genero='$genero', status_disponibilidade='$status_disponibilidade' 
-          WHERE id=$id";
-
-// Executa a consulta
-if (mysqli_query($conexao, $query)) {
-    // Redireciona para a página de cadastros após o sucesso
-    header('Location: index.php?pagina=cadastros');
+    if (mysqli_stmt_execute($stmt)) {
+        // Redireciona após sucesso
+        header('Location: index.php?pagina=cadastros');
+    } else {
+        echo "Erro ao atualizar o livro: " . mysqli_error($conexao);
+    }
 } else {
-    // Caso ocorra um erro, exibe a mensagem
-    echo "Erro ao atualizar o livro: " . mysqli_error($conexao);
+    echo "Dados incompletos no formulário.";
 }
 ?>
